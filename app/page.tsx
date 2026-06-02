@@ -34,10 +34,10 @@ export default async function HomePage() {
         }} />
 
         <div className="relative max-w-6xl mx-auto px-6 w-full py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
 
             {/* Left — copy */}
-            <div>
+            <div className="lg:col-span-3">
               <div className="flex items-center gap-2 mb-8 anim">
                 <div className="dot-pulse" />
                 <span className="tag tag-accent">Now Accepting New Clients</span>
@@ -84,7 +84,7 @@ export default async function HomePage() {
             </div>
 
             {/* Right — real photo */}
-            <div className="hidden lg:block relative">
+            <div className="hidden lg:block relative lg:col-span-2">
               <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '4/5' }}>
                 <img
                   src="https://cxmhvxubhkkvqxilrtxo.supabase.co/storage/v1/object/public/Images/alex-hero.png"
