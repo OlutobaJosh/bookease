@@ -20,79 +20,92 @@ export default async function HomePage() {
       {/* ── HERO ── */}
       <section
         className="relative min-h-screen flex flex-col justify-center"
-        style={{
-          background: 'var(--bg)',
-          paddingTop: '4rem',
-          overflow: 'hidden',
-        }}
+        style={{ background: 'var(--bg)', paddingTop: '4rem', overflow: 'hidden' }}
       >
         {/* Subtle radial */}
         <div className="absolute inset-0 pointer-events-none" style={{
           background: 'radial-gradient(ellipse 90% 60% at 50% 30%, rgba(127,255,196,0.04) 0%, transparent 65%)',
         }} />
 
-        {/* Dot grid decoration */}
+        {/* Dot grid */}
         <div className="absolute inset-0 pointer-events-none opacity-20" style={{
           backgroundImage: 'radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
         }} />
 
-        <div className="relative max-w-6xl mx-auto px-6 w-full py-24">
-          {/* Tag */}
-          <div className="flex items-center gap-2 mb-8 anim">
-            <div className="dot-pulse" />
-            <span className="tag tag-accent">Now Accepting New Clients</span>
-          </div>
+        <div className="relative max-w-6xl mx-auto px-6 w-full py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-          {/* Main heading — centered, large, like Arkitek */}
-          <h1
-            className="font-display anim d1"
-            style={{
-              fontSize: 'clamp(3.2rem, 9vw, 8.5rem)',
-              lineHeight: 1.0,
-              color: 'var(--text)',
-              letterSpacing: '-0.02em',
-              maxWidth: '800px',
-            }}
-          >
-            Creating Athletic
-            <br />
-            <span style={{ color: 'var(--accent)' }}>Masterpieces</span>
-          </h1>
-
-          {/* Sub */}
-          <p
-            className="mt-6 anim d2 max-w-lg"
-            style={{ fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.7 }}
-          >
-            Alex Carter builds bodies, elevates performance, and proposes intelligent training solutions that drive real results.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-3 mt-10 anim d3">
-            <Link href="/book" className="btn-primary">Book a Session →</Link>
-            <Link href="/#services" className="btn-ghost">View Services</Link>
-          </div>
-
-          {/* Stats strip */}
-          <div
-            className="mt-16 anim d4 grid grid-cols-3 max-w-lg gap-0"
-            style={{ borderTop: '1px solid var(--border)', paddingTop: '1.5rem' }}
-          >
-            {[
-              { val: '8+',  label: 'Years Training' },
-              { val: '300+', label: 'Clients Trained' },
-              { val: '95%', label: 'Goal Achievement' },
-            ].map((s, i) => (
-              <div key={s.label} style={{ borderRight: i < 2 ? '1px solid var(--border)' : 'none', paddingRight: '1.5rem', paddingLeft: i > 0 ? '1.5rem' : 0 }}>
-                <p className="font-display" style={{ fontSize: '1.8rem', color: 'var(--text)', lineHeight: 1 }}>{s.val}</p>
-                <p className="text-xs mt-1" style={{ color: 'var(--muted)' }}>{s.label}</p>
+            {/* Left — copy */}
+            <div>
+              <div className="flex items-center gap-2 mb-8 anim">
+                <div className="dot-pulse" />
+                <span className="tag tag-accent">Now Accepting New Clients</span>
               </div>
-            ))}
+
+              <h1
+                className="font-display anim d1"
+                style={{
+                  fontSize: 'clamp(3.2rem, 7vw, 7rem)',
+                  lineHeight: 1.0,
+                  color: 'var(--text)',
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                Creating Athletic
+                <br />
+                <span style={{ color: 'var(--accent)' }}>Masterpieces</span>
+              </h1>
+
+              <p className="mt-6 anim d2 max-w-lg" style={{ fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.7 }}>
+                Alex Carter builds bodies, elevates performance, and delivers intelligent training solutions that drive real results.
+              </p>
+
+              <div className="flex flex-wrap gap-3 mt-10 anim d3">
+                <Link href="/book" className="btn-primary">Book a Session →</Link>
+                <Link href="/#services" className="btn-ghost">View Services</Link>
+              </div>
+
+              <div
+                className="mt-16 anim d4 grid grid-cols-3 max-w-lg gap-0"
+                style={{ borderTop: '1px solid var(--border)', paddingTop: '1.5rem' }}
+              >
+                {[
+                  { val: '8+',   label: 'Years Training' },
+                  { val: '300+', label: 'Clients Trained' },
+                  { val: '95%',  label: 'Goal Achievement' },
+                ].map((s, i) => (
+                  <div key={s.label} style={{ borderRight: i < 2 ? '1px solid var(--border)' : 'none', paddingRight: '1.5rem', paddingLeft: i > 0 ? '1.5rem' : 0 }}>
+                    <p className="font-display" style={{ fontSize: '1.8rem', color: 'var(--text)', lineHeight: 1 }}>{s.val}</p>
+                    <p className="text-xs mt-1" style={{ color: 'var(--muted)' }}>{s.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — real photo */}
+            <div className="hidden lg:block relative">
+              <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '4/5' }}>
+                <img
+                  src="https://cxmhvxubhkkvqxilrtxo.supabase.co/storage/v1/object/public/Images/alex-hero.png"
+                  alt="Alex Carter — Personal Trainer"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+                />
+                {/* Subtle overlay at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(8,8,8,0.6), transparent)' }} />
+                {/* Name badge */}
+                <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl" style={{ background: 'rgba(8,8,8,0.75)', backdropFilter: 'blur(12px)', border: '1px solid var(--border)' }}>
+                  <p className="font-display text-lg" style={{ color: 'var(--text)', letterSpacing: '-0.01em' }}>Alex Carter</p>
+                  <p className="tag tag-accent mt-0.5">Head Coach · NASM-CPT · CSCS</p>
+                </div>
+              </div>
+              {/* Decorative accent line */}
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-2xl pointer-events-none" style={{ border: '1px solid rgba(127,255,196,0.15)' }} />
+            </div>
+
           </div>
         </div>
 
-        {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, var(--bg))' }} />
       </section>
 
@@ -214,15 +227,13 @@ export default async function HomePage() {
 
             {/* Right — photo + stats */}
             <div className="flex flex-col gap-4">
-              {/* Photo placeholder card */}
-              <div
-                className="card flex flex-col items-center justify-center gap-3"
-                style={{ height: '280px', opacity: 0.6 }}
-              >
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" style={{ color: 'var(--muted)' }}>
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                </svg>
-                <span className="tag">Alex Carter Photo</span>
+              {/* Real photo */}
+              <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '1/1' }}>
+                <img
+                  src="https://cxmhvxubhkkvqxilrtxo.supabase.co/storage/v1/object/public/Images/alex-about.png"
+                  alt="Alex Carter"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+                />
               </div>
 
               {/* Stats row */}
