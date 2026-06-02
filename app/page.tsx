@@ -87,7 +87,7 @@ export default async function HomePage() {
             <div className="hidden lg:block relative lg:col-span-2">
               <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '4/5' }}>
                 <img
-                  src="https://cxmhvxubhkkvqxilrtxo.supabase.co/storage/v1/object/public/Images/alex-hero.png"
+                  src="https://cxmhvxubhkkvqxilrtxo.supabase.co/storage/v1/object/public/Images/alex-hero.png?v=2"
                   alt="Alex Carter — Personal Trainer"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
                 />
