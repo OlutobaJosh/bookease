@@ -30,29 +30,37 @@ Generate a complete weekly training plan with the following structure:
 
 Keep the tone motivating, professional, and specific. Format clearly with headers and bullet points.`;
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 1500,
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'llama3-8b-8192',
+        messages: [
+          {
+            role: 'system',
+            content: 'You are Alex Carter, an elite certified personal trainer. You create detailed, science-backed, motivating training plans.',
           },
-        }),
-      }
-    );
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
+        temperature: 0.7,
+        max_tokens: 1500,
+      }),
+    });
 
     if (!response.ok) {
       const err = await response.json();
-      console.error('Gemini error:', err);
+      console.error('Groq error:', err);
       return NextResponse.json({ error: 'AI service unavailable. Please try again.' }, { status: 500 });
     }
 
     const data = await response.json();
-    const plan = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    const plan = data.choices?.[0]?.message?.content;
 
     if (!plan) {
       return NextResponse.json({ error: 'Could not generate plan. Please try again.' }, { status: 500 });
